@@ -7,6 +7,7 @@ module Lib
 , myButLast
 , elementAt
 , elementAt'
+, myLength
 ) where
 
 -------------------- Problem 01
@@ -50,6 +51,14 @@ elementAt' (x:xs) n
  | n > (length (x:xs)) = Nothing
  | n == 1 = Just x
  | otherwise = elementAt' xs (n-1)
+
+-------------------- Problem 04
+
+myLength :: [a] -> Int
+myLength l = myLengthImpl l 0
+myLengthImpl [] n = n
+myLengthImpl [x] n = n+1
+myLengthImpl (x:xs) n = myLengthImpl xs (n+1)
 
 
 

@@ -43,4 +43,10 @@ tests_003' = test ["test003_01'" ~: "(elementAt [1,2,3,4] 2 )" ~: (Just 2) ~=? (
                   , "test003_03'" ~: "(elementAt [1,2,3,4] 5 )" ~: Nothing ~=? (elementAt' [1,2,3,4] 5 )
                   , "test003_04'" ~: "(elementAt ['a','b','c','d'] 3)" ~: (Just 'c') ~=? (elementAt' ['a','b','c','d'] 3)]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003']
+-------------------- Problem 04
+
+tests_004 = test ["test004_01" ~: "(myLength [1,2,3,4] )" ~: (4) ~=? (myLength [1,2,3,4] )
+                  , "test004_02" ~: "(myLength ([]::[Int]))" ~: (0) ~=? (myLength ([]::[Int]))
+                  , "test004_03" ~: "(myLength ['z'])" ~: (1) ~=? (myLength ['z'])]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004]
