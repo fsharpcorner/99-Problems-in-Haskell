@@ -49,4 +49,10 @@ tests_004 = test ["test004_01" ~: "(myLength [1,2,3,4] )" ~: (4) ~=? (myLength [
                   , "test004_02" ~: "(myLength ([]::[Int]))" ~: (0) ~=? (myLength ([]::[Int]))
                   , "test004_03" ~: "(myLength ['z'])" ~: (1) ~=? (myLength ['z'])]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004]
+-------------------- Problem 05
+tests_005 = test ["test005_01" ~: "(myReverse [1,2,3,4] )" ~: ([4,3,2,1]) ~=? (myReverse [1,2,3,4] )
+                  , "test005_02" ~: "(myReverse ([]::[Int]))" ~: ([]) ~=? (myReverse ([]::[Int]))
+                  , "test005_03" ~: "(myReverse ['z'])" ~: (['z']) ~=? (myReverse ['z'])
+                  , "test005_04" ~: "(myReverse (A man, a plan, a canal, panama!)" ~: ("!amanap ,lanac a ,nalp a ,nam A") ~=? (myReverse "A man, a plan, a canal, panama!")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005]

@@ -8,6 +8,7 @@ module Lib
 , elementAt
 , elementAt'
 , myLength
+, myReverse
 ) where
 
 -------------------- Problem 01
@@ -60,7 +61,14 @@ myLengthImpl [] n = n
 myLengthImpl [x] n = n+1
 myLengthImpl (x:xs) n = myLengthImpl xs (n+1)
 
-
+-------------------- Problem 05
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse [x] = [x]
+myReverse l = myReverseImpl l []
+myReverseImpl :: [a] -> [a] -> [a]
+myReverseImpl [] nl = nl
+myReverseImpl (x:xs) nl = myReverseImpl xs (x:nl)
 
 someFunc :: IO ()
 someFunc =
