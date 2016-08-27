@@ -10,6 +10,8 @@ module Lib
 , myLength
 , myReverse
 , isPalindrome
+, flatten
+, NestedList(..)
 ) where
 
 -------------------- Problem 01
@@ -76,6 +78,14 @@ myReverseImpl (x:xs) nl = myReverseImpl xs (x:nl)
 isPalindrome :: [Char] -> Bool
 isPalindrome [] = False
 isPalindrome w = w == (reverse w)
+
+-------------------- Problem 07
+data NestedList a = Elem a | List [NestedList a]
+flatten :: NestedList a -> [a]
+flatten (Elem x) = [x]
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+flatten (List []) = []
+
 
 someFunc :: IO ()
 someFunc =

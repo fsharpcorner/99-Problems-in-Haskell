@@ -61,4 +61,9 @@ tests_006 = test ["test006_01" ~: "(isPalindrome [] )" ~: (False) ~=? (isPalindr
                   , "test006_03" ~: "(isPalindrome [abc])" ~: (False) ~=? (isPalindrome "abc")
                   , "test006_04" ~: "(isPalindrome [laval])" ~: (True) ~=? (isPalindrome "laval")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006]
+-------------------- Problem 07
+tests_007 = test ["test007_01" ~: "(flatten [] )" ~: ([]::[Char]) ~=? (flatten (List []))
+                  ,"test007_02" ~: "(flatten ['a'])" ~: (['a']) ~=? (flatten (Elem 'a'))
+                  , "test007_03" ~: "(flatten ['a',['b','c']])" ~: (['a','b','c']) ~=? (flatten (List [Elem 'a', List [Elem 'b',Elem 'c']]))]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007]
