@@ -55,4 +55,10 @@ tests_005 = test ["test005_01" ~: "(myReverse [1,2,3,4] )" ~: ([4,3,2,1]) ~=? (m
                   , "test005_03" ~: "(myReverse ['z'])" ~: (['z']) ~=? (myReverse ['z'])
                   , "test005_04" ~: "(myReverse (A man, a plan, a canal, panama!)" ~: ("!amanap ,lanac a ,nalp a ,nam A") ~=? (myReverse "A man, a plan, a canal, panama!")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005]
+-------------------- Problem 06
+tests_006 = test ["test006_01" ~: "(isPalindrome [] )" ~: (False) ~=? (isPalindrome "")
+                  , "test006_02" ~: "(isPalindrome [a])" ~: (True) ~=? (isPalindrome "a")
+                  , "test006_03" ~: "(isPalindrome [abc])" ~: (False) ~=? (isPalindrome "abc")
+                  , "test006_04" ~: "(isPalindrome [laval])" ~: (True) ~=? (isPalindrome "laval")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006]

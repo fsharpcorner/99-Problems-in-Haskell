@@ -9,6 +9,7 @@ module Lib
 , elementAt'
 , myLength
 , myReverse
+, isPalindrome
 ) where
 
 -------------------- Problem 01
@@ -69,6 +70,12 @@ myReverse l = myReverseImpl l []
 myReverseImpl :: [a] -> [a] -> [a]
 myReverseImpl [] nl = nl
 myReverseImpl (x:xs) nl = myReverseImpl xs (x:nl)
+
+-------------------- Problem 06
+
+isPalindrome :: [Char] -> Bool
+isPalindrome [] = False
+isPalindrome w = w == (reverse w)
 
 someFunc :: IO ()
 someFunc =
