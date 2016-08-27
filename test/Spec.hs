@@ -66,4 +66,9 @@ tests_007 = test ["test007_01" ~: "(flatten [] )" ~: ([]::[Char]) ~=? (flatten (
                   ,"test007_02" ~: "(flatten ['a'])" ~: (['a']) ~=? (flatten (Elem 'a'))
                   , "test007_03" ~: "(flatten ['a',['b','c']])" ~: (['a','b','c']) ~=? (flatten (List [Elem 'a', List [Elem 'b',Elem 'c']]))]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007]
+-------------------- Problem 08
+tests_008 = test ["test008_01" ~: "(compress [] )" ~: ("") ~=? (compress "")
+                  , "test008_02" ~: "(compress [abc])" ~: ("abc") ~=? (compress "abc")
+                  , "test008_03" ~: "(compress [aaaabccaadeeee])" ~: ("abcade") ~=? (compress "aaaabccaadeeee")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008]

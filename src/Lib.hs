@@ -12,6 +12,7 @@ module Lib
 , isPalindrome
 , flatten
 , NestedList(..)
+, compress
 ) where
 
 -------------------- Problem 01
@@ -85,6 +86,19 @@ flatten :: NestedList a -> [a]
 flatten (Elem x) = [x]
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 flatten (List []) = []
+
+-------------------- Problem 08
+compress :: [Char] -> [Char]
+compress [] = []
+compress l = compressImpl l []
+--compressImpl [] nl = reverse (nl)
+--compressImpl (x:xs) [] = compressImpl xs (x:[])
+compressImpl l nl
+ | length (l) == 0 = reverse (nl)
+ | length (nl) == 0 = compressImpl (tail l) ((head l):nl)
+ | (head l) == (head nl) = compressImpl (tail l) nl
+ | otherwise = compressImpl (tail l) ((head l):nl)
+
 
 
 someFunc :: IO ()
