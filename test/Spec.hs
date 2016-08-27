@@ -23,6 +23,12 @@ tests_001'' = test ["test001_01" ~: "(myLast'' [1,2,3,4])" ~: (Just 4) ~=? (myLa
 
 --test01_1 = TestCase (assertEqual "for (myLast [1,2,3,4])," (Just 4) (testedFunction01 [1,2,3,4]))
 
+-------------------- Problem 02
+
+tests_002 = test ["test002_01" ~: "(myButLast [1,2,3,4])" ~: (Just 3) ~=? (myButLast [1,2,3,4])
+                  , "test002_02" ~: "(myButLast [])" ~: Nothing ~=? (myButLast ([]::[Int]))
+                  , "test002_03" ~: "(myButLast [1])" ~: Nothing ~=? (myButLast [1])
+                  , "test002_04" ~: "(myButLast ['a','b','c','d'])" ~: (Just 'c') ~=?(myButLast ['a','b','c','d'])]
 
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'']
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002]
