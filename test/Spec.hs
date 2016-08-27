@@ -71,4 +71,10 @@ tests_008 = test ["test008_01" ~: "(compress [] )" ~: ("") ~=? (compress "")
                   , "test008_02" ~: "(compress [abc])" ~: ("abc") ~=? (compress "abc")
                   , "test008_03" ~: "(compress [aaaabccaadeeee])" ~: ("abcade") ~=? (compress "aaaabccaadeeee")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008]
+-------------------- Problem 09
+tests_009 = test ["test009_01" ~: "(pack [] )" ~: ([]) ~=? (pack "")
+                  , "test009_02" ~: "(pack [a])" ~: (["a"]) ~=? (pack "a")
+                  , "test009_03" ~: "(pack [abc])" ~: (["a","b","c"]) ~=? (pack "abc")
+                  , "test009_04" ~: "(pack [aaaabccaadeeee])" ~: (["aaaa","b","cc","aa","d","eeee"]) ~=? (pack "aaaabccaadeeee")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009]

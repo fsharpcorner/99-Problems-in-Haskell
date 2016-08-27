@@ -13,6 +13,7 @@ module Lib
 , flatten
 , NestedList(..)
 , compress
+, pack
 ) where
 
 -------------------- Problem 01
@@ -91,15 +92,22 @@ flatten (List []) = []
 compress :: [Char] -> [Char]
 compress [] = []
 compress l = compressImpl l []
---compressImpl [] nl = reverse (nl)
---compressImpl (x:xs) [] = compressImpl xs (x:[])
 compressImpl l nl
  | length (l) == 0 = reverse (nl)
  | length (nl) == 0 = compressImpl (tail l) ((head l):nl)
  | (head l) == (head nl) = compressImpl (tail l) nl
  | otherwise = compressImpl (tail l) ((head l):nl)
 
-
+ -------------------- Problem 09
+pack :: [Char] -> [[Char]]
+pack [] = []
+pack l = packImpl l [] []
+packImpl l nl current
+ | length (l) == 0 && length (current) == 0 = reverse (nl)
+ | length (l) == 0 = reverse (current:nl)
+ | length (current) == 0 = packImpl (tail l) nl ((head l):current)
+ | (head l) == (head current) = packImpl (tail l) nl ((head l):current)
+ | otherwise = packImpl (tail l) (current:nl) ((head l):[])
 
 someFunc :: IO ()
 someFunc =
