@@ -77,4 +77,10 @@ tests_009 = test ["test009_01" ~: "(pack [] )" ~: ([]) ~=? (pack "")
                   , "test009_03" ~: "(pack [abc])" ~: (["a","b","c"]) ~=? (pack "abc")
                   , "test009_04" ~: "(pack [aaaabccaadeeee])" ~: (["aaaa","b","cc","aa","d","eeee"]) ~=? (pack "aaaabccaadeeee")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009]
+-------------------- Problem 10
+tests_010 = test ["test010_01" ~: "(encode [] )" ~: ([]) ~=? (encode "")
+                  , "test010_02" ~: "(encode [a])" ~: ([(1,'a')]) ~=? (encode "a")
+                  , "test010_03" ~: "(encode [abc])" ~: ([(1,'a'),(1,'b'),(1,'c')]) ~=? (encode "abc")
+                  , "test010_04" ~: "(encode [aaaabccaadeeee])" ~: ([(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]) ~=? (encode "aaaabccaadeeee")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010]

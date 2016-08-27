@@ -14,6 +14,7 @@ module Lib
 , NestedList(..)
 , compress
 , pack
+, encode
 ) where
 
 -------------------- Problem 01
@@ -108,6 +109,13 @@ packImpl l nl current
  | length (current) == 0 = packImpl (tail l) nl ((head l):current)
  | (head l) == (head current) = packImpl (tail l) nl ((head l):current)
  | otherwise = packImpl (tail l) (current:nl) ((head l):[])
+
+-------------------- Problem 10
+encode :: [Char] -> [(Int, Char)]
+encode [] = []
+encode l = reverse(encodeImpl (pack l))
+encodeImpl = foldl (\acc x -> ((length x),(head x)) : acc) []
+
 
 someFunc :: IO ()
 someFunc =
