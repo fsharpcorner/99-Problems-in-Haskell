@@ -17,6 +17,7 @@ module Lib
 , encode
 , encode_modified
 , EncodeResult(..)
+, decode
 ) where
 
 -------------------- Problem 01
@@ -120,7 +121,7 @@ encodeImpl = foldl (\acc x -> ((length x),(head x)) : acc) []
 
 -------------------- Problem 11
 data EncodeResult = Single Char | Multiple Int Char
-	deriving (Eq, Show)
+ deriving (Eq, Show)
 
 parse_result :: (Int, Char) -> EncodeResult
 parse_result r
@@ -132,6 +133,16 @@ encode_modified [] = []
 encode_modified l = reverse(encode_modifiedImpl (pack l))
 encode_modifiedImpl = foldl (\acc x -> (parse_result ((length x),(head x)) ) : acc) []
 
+-------------------- Problem 12
+decode :: [EncodeResult] -> [Char]
+decode [] = []
+decode l = reverse(decodeImpl l [])
+decodeImpl :: [EncodeResult] -> [Char] -> [Char]
+decodeImpl [] s = s
+decodeImpl ((Single x):xs) s = decodeImpl xs (x:s)
+decodeImpl ((Multiple n x):xs) s = decodeImpl xs ((replicate n x)++s)
+
+
 someFunc :: IO ()
 someFunc =
-	putStrLn "someFunc"
+ putStrLn "someFunc"
