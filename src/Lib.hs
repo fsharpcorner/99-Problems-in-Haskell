@@ -15,6 +15,8 @@ module Lib
 , compress
 , pack
 , encode
+, encode_modified
+, EncodeResult(..)
 ) where
 
 -------------------- Problem 01
@@ -116,6 +118,19 @@ encode [] = []
 encode l = reverse(encodeImpl (pack l))
 encodeImpl = foldl (\acc x -> ((length x),(head x)) : acc) []
 
+-------------------- Problem 11
+data EncodeResult = Single Char | Multiple Int Char
+	deriving (Eq, Show)
+
+parse_result :: (Int, Char) -> EncodeResult
+parse_result r
+ | fst(r) ==1 = Single (snd r)
+ | otherwise = Multiple (fst r ) (snd r)
+
+encode_modified :: [Char] -> [EncodeResult]
+encode_modified [] = []
+encode_modified l = reverse(encode_modifiedImpl (pack l))
+encode_modifiedImpl = foldl (\acc x -> (parse_result ((length x),(head x)) ) : acc) []
 
 someFunc :: IO ()
 someFunc =

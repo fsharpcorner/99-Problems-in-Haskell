@@ -83,4 +83,10 @@ tests_010 = test ["test010_01" ~: "(encode [] )" ~: ([]) ~=? (encode "")
                   , "test010_03" ~: "(encode [abc])" ~: ([(1,'a'),(1,'b'),(1,'c')]) ~=? (encode "abc")
                   , "test010_04" ~: "(encode [aaaabccaadeeee])" ~: ([(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]) ~=? (encode "aaaabccaadeeee")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010]
+-------------------- Problem 11
+tests_011 = test ["test011_01" ~: "(encode_modified [] )" ~: ([]::[EncodeResult]) ~=? (encode_modified "")
+                  , "test011_02" ~: "(encode_modified [a])" ~: ([Single 'a']) ~=? (encode_modified "a")
+                  , "test011_03" ~: "(encode_modified [abc])" ~: ([Single 'a', Single 'b',Single 'c']) ~=? (encode_modified "abc")
+                  , "test011_04" ~: "(encode_modified [aaaabccaadeeee])" ~: ([Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e']) ~=? (encode_modified "aaaabccaadeeee")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011]
