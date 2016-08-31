@@ -19,6 +19,7 @@ module Lib
 , EncodeResult(..)
 , decode
 , encode_direct
+, dupli
 ) where
 
 -------------------- Problem 01
@@ -156,6 +157,12 @@ encode_directImpl (x:xs) nl current
  | (length current) == 0 = encode_directImpl xs nl [x]
  | x == (head current) = encode_directImpl xs nl (x:current)
  | otherwise = encode_directImpl xs (parse_current(current):nl) [x]
+
+
+ -------------------- Problem 14
+dupli :: [Char] -> [Char]
+dupli [] = []
+dupli (x:xs) = x:x:(dupli (xs))
 
 
 someFunc :: IO ()
