@@ -95,4 +95,10 @@ tests_012 = test ["test012_01" ~: "(decode [] )" ~: ("") ~=? (decode [])
                   , "test012_03" ~: "(decode [abc])" ~: ("abc") ~=? (decode [Single 'a', Single 'b',Single 'c'])
                   , "test012_04" ~: "(decode [aaaabccaadeeee])" ~: ("aaaabccaadeeee") ~=? (decode [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e'])]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012]
+-- -------------------- Problem 13
+-- tests_013 = test ["test013_01" ~: "(encode_direct [] )" ~: ([]::[EncodeResult]) ~=? (encode_direct "")
+--                   , "test013_02" ~: "(encode_direct [a])" ~: ([Single 'a']) ~=? (encode_direct "a")
+--                   , "test013_03" ~: "(encode_direct [abc])" ~: ([Single 'a', Single 'b',Single 'c']) ~=? (encode_direct "abc")
+--                   , "test013_04" ~: "(encode_direct [aaaabccaadeeee])" ~: ([Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e']) ~=? (encode_direct "aaaabccaadeeee")]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012] --, tests_013

@@ -106,12 +106,11 @@ compressImpl l nl
 pack :: [Char] -> [[Char]]
 pack [] = []
 pack l = packImpl l [] []
-packImpl l nl current
- | length (l) == 0 && length (current) == 0 = reverse (nl)
- | length (l) == 0 = reverse (current:nl)
- | length (current) == 0 = packImpl (tail l) nl ((head l):current)
- | (head l) == (head current) = packImpl (tail l) nl ((head l):current)
- | otherwise = packImpl (tail l) (current:nl) ((head l):[])
+packImpl [] nl current = reverse (current:nl)
+packImpl (x:xs) nl [] = packImpl xs nl [x]
+packImpl (x:xs) nl current
+ | x == (head current) = packImpl xs nl (x:current)
+ | otherwise = packImpl xs (current:nl) [x]
 
 -------------------- Problem 10
 encode :: [Char] -> [(Int, Char)]
