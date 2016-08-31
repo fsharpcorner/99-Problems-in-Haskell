@@ -107,4 +107,11 @@ tests_014 = test ["test014_01" ~: "(dupli [] )" ~: ("") ~=? (dupli "")
                   , "test014_03" ~: "(dupli [abc])" ~: ("aabbcc") ~=? (dupli "abc")
                   , "test014_04" ~: "(dupli [aab])" ~: ("aaaabb") ~=? (dupli "aab")]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014]
+---------------------- Problem 15
+tests_015 = test ["test015_01" ~: "(repli [] )" ~: ("") ~=? (repli "" 3)
+                  , "test015_02" ~: "(repli [abc] 0)" ~: ("") ~=? (repli "abc" 0)
+                  , "test015_03" ~: "(repli [abc] 1)" ~: ("abc") ~=? (repli "abc" 1)
+                  , "test015_04" ~: "(repli [aab] 3)" ~: ("aaabbbccc") ~=? (repli "abc" 3)]
+
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014, tests_015]

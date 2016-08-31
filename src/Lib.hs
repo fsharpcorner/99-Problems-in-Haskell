@@ -20,6 +20,7 @@ module Lib
 , decode
 , encode_direct
 , dupli
+, repli
 ) where
 
 -------------------- Problem 01
@@ -164,6 +165,16 @@ dupli :: [Char] -> [Char]
 dupli [] = []
 dupli (x:xs) = x:x:(dupli (xs))
 
+
+ -------------------- Problem 15
+rep ::Char -> Int -> [Char] -> [Char]
+rep x n l
+ | (n == 0) = l
+ | otherwise = rep x (n-1) (x:l)
+
+repli :: [Char] -> Int -> [Char]
+repli [] _ = []
+repli (x:xs) n = (rep x n []) ++ (repli (xs) n)
 
 someFunc :: IO ()
 someFunc =
