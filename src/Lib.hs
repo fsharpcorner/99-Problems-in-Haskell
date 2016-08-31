@@ -18,6 +18,7 @@ module Lib
 , encode_modified
 , EncodeResult(..)
 , decode
+, encode_direct
 ) where
 
 -------------------- Problem 01
@@ -140,6 +141,21 @@ decodeImpl :: [EncodeResult] -> [Char] -> [Char]
 decodeImpl [] s = s
 decodeImpl ((Single x):xs) s = decodeImpl xs (x:s)
 decodeImpl ((Multiple n x):xs) s = decodeImpl xs ((replicate n x)++s)
+
+-------------------- Problem 13
+
+parse_current c
+ | length (c) == 1 = (Single (c!!0))
+ | otherwise = (Multiple (length c) (c!!0))
+
+encode_direct :: [Char] -> [EncodeResult]
+encode_direct [] = []
+encode_direct l = encode_directImpl l [] []
+encode_directImpl [] nl current = reverse (parse_current(current):nl)
+encode_directImpl (x:xs) nl current
+ | (length current) == 0 = encode_directImpl xs nl [x]
+ | x == (head current) = encode_directImpl xs nl (x:current)
+ | otherwise = encode_directImpl xs (parse_current(current):nl) [x]
 
 
 someFunc :: IO ()
