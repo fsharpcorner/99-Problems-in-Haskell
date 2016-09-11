@@ -120,5 +120,11 @@ tests_016 = test ["test016_01" ~: "(dropEvery [] )" ~: ("") ~=? (dropEvery "" 3)
                   , "test016_04" ~: "(dropEvery [abc] 4)" ~: ("abc") ~=? (dropEvery "abc" 4)
                   , "test016_05" ~: "(dropEvery [abcdefghik] 3)" ~: ("abdeghk") ~=? (dropEvery "abcdefghik" 3)]
 
+---------------------- Problem 17
+tests_017 = test ["test017_01" ~: "(splitList [] )" ~: ([]) ~=? (splitList "" 3)
+                  , "test017_02" ~: "(splitList [[abc][]] 0)" ~: (["abc",""]) ~=? (splitList "abc" 0)
+                  , "test017_03" ~: "(splitList [[a][bc]] 1)" ~: (["a","bc"]) ~=? (splitList "abc" 1)
+                  , "test017_04" ~: "(splitList [[abc][]] 4)" ~: (["abc",""]) ~=? (splitList "abc" 4)
+                  , "test017_05" ~: "(splitList [abc][defghik] 3)" ~: (["abc","defghik"]) ~=? (splitList "abcdefghik" 3)]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014, tests_015, tests_016]
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014, tests_015, tests_016, tests_017]

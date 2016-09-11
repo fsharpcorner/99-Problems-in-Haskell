@@ -22,6 +22,7 @@ module Lib
 , dupli
 , repli
 , dropEvery
+, splitList
 ) where
 
 -------------------- Problem 01
@@ -193,4 +194,13 @@ dropEveryImpl (x:xs) n currentNumber nl
  | (currentNumber == n) = dropEveryImpl (xs) n 1 (nl)
  | otherwise =  dropEveryImpl (xs) n (currentNumber+1) (x:nl)
 
--- | length (x:xs) == 0 = nl
+ -------------------- Problem 17
+
+splitList ::[Char] -> Int -> [[Char]]
+splitList l 0 = l:[""]
+splitList [] _ = []
+splitList l n = splitListImpl l n []
+splitListImpl ::[Char] -> Int -> [Char] -> [[Char]]
+splitListImpl l 0 nl = (reverse nl):l:[]
+splitListImpl [] n nl = (reverse nl):[""]
+splitListImpl (x:xs) n nl = splitListImpl (xs) (n-1) (x:nl)
