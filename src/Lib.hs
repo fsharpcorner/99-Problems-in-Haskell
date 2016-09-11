@@ -21,6 +21,7 @@ module Lib
 , encode_direct
 , dupli
 , repli
+, dropEvery
 ) where
 
 -------------------- Problem 01
@@ -179,3 +180,17 @@ repli (x:xs) n = (rep x n []) ++ (repli (xs) n)
 someFunc :: IO ()
 someFunc =
  putStrLn "someFunc"
+
+-------------------- Problem 16
+
+dropEvery :: [Char] -> Int -> [Char]
+dropEvery [] _ = []
+dropEvery l 0 = l
+dropEvery l n = dropEveryImpl l n 1 []
+dropEveryImpl :: [Char] -> Int -> Int-> [Char]-> [Char]
+dropEveryImpl [] n currentNumber nl = reverse nl
+dropEveryImpl (x:xs) n currentNumber nl
+ | (currentNumber == n) = dropEveryImpl (xs) n 1 (nl)
+ | otherwise =  dropEveryImpl (xs) n (currentNumber+1) (x:nl)
+
+-- | length (x:xs) == 0 = nl

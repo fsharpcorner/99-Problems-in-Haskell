@@ -113,5 +113,12 @@ tests_015 = test ["test015_01" ~: "(repli [] )" ~: ("") ~=? (repli "" 3)
                   , "test015_03" ~: "(repli [abc] 1)" ~: ("abc") ~=? (repli "abc" 1)
                   , "test015_04" ~: "(repli [aab] 3)" ~: ("aaabbbccc") ~=? (repli "abc" 3)]
 
+---------------------- Problem 16
+tests_016 = test ["test016_01" ~: "(dropEvery [] )" ~: ("") ~=? (dropEvery "" 3)
+                  , "test016_02" ~: "(dropEvery [abc] 0)" ~: ("abc") ~=? (dropEvery "abc" 0)
+                  , "test016_03" ~: "(dropEvery [abc] 1)" ~: ("") ~=? (dropEvery "abc" 1)
+                  , "test016_04" ~: "(dropEvery [abc] 4)" ~: ("abc") ~=? (dropEvery "abc" 4)
+                  , "test016_05" ~: "(dropEvery [abcdefghik] 3)" ~: ("abdeghk") ~=? (dropEvery "abcdefghik" 3)]
 
-main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014, tests_015]
+
+main = runTestTT $ TestList [tests_001, tests_001', tests_001'', tests_002, tests_003, tests_003', tests_004, tests_005, tests_006, tests_007, tests_008, tests_009, tests_010, tests_011, tests_012, tests_013, tests_014, tests_015, tests_016]
